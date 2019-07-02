@@ -75,6 +75,9 @@ def load_tf_weights_in_bert(model, tf_checkpoint_path):
         if name == "global_step":
             print("REACHED GLOBAL STEP")
             continue
+        if name == "module":
+            print("REACHED MODULE")
+            continue    
         print("Loading TF weight {} with shape {}".format(name, shape))
         array = tf.train.load_variable(tf_path, name)
         names.append(name)
