@@ -64,7 +64,7 @@ PRETRAINED_CONFIG_ARCHIVE_MAP = {
     'bert-base-cased-finetuned-mrpc': "https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-finetuned-mrpc-config.json",
 }
 BERT_CONFIG_NAME = 'bert_config.json'
-TF_WEIGHTS_NAME = 'model.ckpt-50'
+TF_WEIGHTS_NAME = 'model.ckpt-51'
 
 def prune_linear_layer(layer, index, dim=0):
     """ Prune a linear layer (a model parameters) to keep only entries in index.
