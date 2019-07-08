@@ -64,13 +64,15 @@ PRETRAINED_CONFIG_ARCHIVE_MAP = {
     'bert-base-cased-finetuned-mrpc': "https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-finetuned-mrpc-config.json",
 }
 BERT_CONFIG_NAME = 'bert_config.json'
-TF_WEIGHTS_NAME = 'model.ckpt'
+TF_WEIGHTS_NAME = 'model.ckpt-00000'
 
 def prune_linear_layer(layer, index, dim=0):
     """ Prune a linear layer (a model parameters) to keep only entries in index.
         Return the pruned layer as a new layer with requires_grad=True.
         Used to remove heads.
     """
+    if name in ['output_weights' , 'output_bias']:
+        name = 'classifier/' + name
     index = index.to(layer.weight.device)
     W = layer.weight.index_select(dim, index).clone().detach()
     if layer.bias is not None:
